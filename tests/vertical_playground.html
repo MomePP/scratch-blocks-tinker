@@ -27,6 +27,7 @@
   <script src="../blocks_vertical/data.js"></script>
   <script src="../blocks_vertical/default_toolbox.js"></script>
 
+  <link rel="stylesheet" type="text/css" href="../tinker.css">
 
   <script>
     'use strict';
@@ -36,8 +37,15 @@
 
     function onWorkspaceChange(item) {
       var output = document.getElementById('importExport');
-      output.value = Blockly.GogoCode.workspaceToCode(workspace);
-      console.log(output.value);
+      var logospace = document.getElementById('gogoCode');
+      var code = filterCode(Blockly.GogoCode.workspaceToCode(workspace));
+      // console.log(code);
+      output.value = code;
+
+      logospace.innerHTML = code;
+
+      autosaveBlock();
+      // console.log(output.value);
       taChange();
     }
 
@@ -53,6 +61,96 @@
       }
       document.getElementById(id).style.display = "block";
       evt.currentTarget.className += " active";
+    }
+
+    function autosaveBlock() {
+      var xml = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace);
+      var data = Blockly.Xml.domToText(xml);
+
+      // Store data in blob.
+      window.localStorage.setItem('autoSaveBlock', data);
+    }
+
+    function autoloadBlock() {
+
+      console.log('-- Loading saved code.')
+      var xml = Blockly.Xml.textToDom('<xml><block type="procedure_procedure" x="250" y="50"><title name="pname">main</title></block></xml>');
+      xml.editable = false;
+      xml.deletable = false;
+      workspace.clear();
+      Blockly.Xml.domToWorkspace(xml, workspace);
+
+      //return;
+
+      var loadedBlock = window.localStorage.getItem('autoSaveBlock');
+      //alert(loadedBlock.split('procedure_procedure')[1]);
+      if (!loadedBlock) return;
+      if (!(loadedBlock.split('procedure_procedure')[1])) {
+        loadedBlock = loadedBlock.split('</xml>')[0] + '<block type="procedure_procedure" x="100" y="50"><title name="pname">main</title></block></xml>';
+      }
+      try {
+        var xml = Blockly.Xml.textToDom(loadedBlock);
+      } catch (e) {
+
+        return;
+      }
+      if (xml.childElementCount == 0) return;
+      workspace.clear();
+      Blockly.Xml.domToWorkspace(xml, workspace);
+    }
+
+    function filterCode(code) {
+      var codeArr;
+      codeArr = code.split('[p]');
+      codeArr.shift();
+
+      var proc = [];
+
+      codeArr.forEach(function (item) {
+        var str = item.split('[/p]')[0];
+
+        var strTmp = str.split('@@');
+        str = strTmp[0] + (strTmp[2] ? strTmp[2] : '');
+
+        var varArr0 = strTmp[1] ? strTmp[1].split(',') : [];
+        var varArr = [];
+        var variables = str.split('[:]');
+        variables.shift();
+        variables.forEach(function (item2) {
+          varArr.include(item2.split('[;]')[0].split(':')[0]);
+        }, this);
+
+        varArr0.forEach(function (item4) {
+          varArr.erase(item4);
+        }, this);
+
+        var newVar = '';
+
+        varArr.forEach(function (item3) {
+          newVar += '  <span class="c330">set ' + item3 + ' 0</span>\n';
+        }, this);
+        var str2 = str.replace('[SS]', newVar).replace(/\[:\]/g, '').replace(/\[;\]/g, '');
+        proc.push(str2);
+      }, this);
+
+      code = proc.pop() + '@@';
+      code += proc.join('@@');
+
+      codeArr = code.split('\n');
+      clean(codeArr);
+      // codeArr = codeArr.filter(function (item, index) {
+      //   return (clean(item) != '');
+      // });
+      return codeArr.join('\n').replace(/@@/g, '\n\n');
+    }
+
+    function clean(arr) {
+      for (var i = 0; i < arr.length; i++) {
+        if (arr[i] == null || arr[i] == undefined) {
+          arr.splice(i, 1);
+        };
+      };
+      return arr;
     }
 
     function start() {
@@ -122,6 +220,8 @@
       });
 
       workspace.addChangeListener(e => onWorkspaceChange(e));
+
+      autoloadBlock();
 
       if (sessionStorage) {
         // Restore previously displayed text.
@@ -507,10 +607,13 @@
   <!-- <div id=""></div> -->
   <div class="tab">
     <button class="tablinks" onclick="changeTab(event, 'blocklyDiv')" id="block">Blockly</button>
+    <button class="tablinks" onclick="changeTab(event, 'gogoCode')">Logo Code</button>
     <button class="tablinks" onclick="changeTab(event, 'Setting')">Setting</button>
   </div>
 
   <div id="blocklyDiv" class="tabcontent"></div>
+
+  <div id="gogoCode" class="tabcontent"></div>
 
   <div id="Setting" class="tabcontent">
     Sidebar

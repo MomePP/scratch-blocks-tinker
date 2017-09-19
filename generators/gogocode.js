@@ -1048,7 +1048,7 @@ Blockly.GogoCode.math_equal = function() {
     value_right +
     "</span> ";
   // TODO: Change ORDER_NONE to the correct strength.
-  console.log(code);
+  // console.log(code);
   return [code, Blockly.GogoCode.ORDER_NONE];
 };
 
