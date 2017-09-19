@@ -8,8 +8,8 @@ Blockly.Blocks.action_beep = {
     this.setNextStatement(true, null);
     this.setTooltip("Causes the GoGo to beep.");
     this.jsonInit({
-      "extensions":['colours_other','shape_statement']
-    })
+      extensions: ["colours_other", "shape_statement"]
+    });
   }
 };
 
@@ -290,9 +290,8 @@ Blockly.Blocks.action_led = {
       );
     this.setTooltip("Causes the GoGo to turn LED on/off.");
     this.jsonInit({
-      "extensions": ['colours_other', 'shape_statement']
-
-    })
+      extensions: ["colours_other", "shape_statement"]
+    });
   }
 };
 
@@ -323,7 +322,7 @@ Blockly.Blocks["action_wait"] = {
     this.setInputsInline(true);
     this.setTooltip("Waits for specified time period.");
     this.jsonInit({
-      "extensions": ['colours_time', 'shape_statement']
+      extensions: ["colours_time", "shape_statement"]
     });
   }
 };
@@ -338,7 +337,7 @@ Blockly.Blocks.action_gettimer = {
     this.setOutput(true, Number);
     this.setTooltip("Returns value of free-running timer.");
     this.jsonInit({
-      "extensions": ['colours_time', 'output_string']
+      extensions: ["colours_time", "output_string"]
     });
   }
 };
@@ -351,7 +350,7 @@ Blockly.Blocks.action_reset_timer = {
     this.appendDummyInput().appendField("reset timer");
     this.setTooltip("Resets free-running timer to zero.");
     this.jsonInit({
-      "extensions": ['colours_time', 'shape_statement']
+      extensions: ["colours_time", "shape_statement"]
     });
   }
 };
@@ -366,7 +365,7 @@ Blockly.Blocks["action_settickrate"] = {
     this.setInputsInline(true);
     this.setTooltip("Sets the time beween each Tick");
     this.jsonInit({
-      "extensions": ['colours_time', 'shape_statement']
+      extensions: ["colours_time", "shape_statement"]
     });
   }
 };
@@ -380,7 +379,7 @@ Blockly.Blocks.action_gettickcount = {
     this.setOutput(true, Number);
     this.setTooltip("Reports the number Ticks has passed since the last reset");
     this.jsonInit({
-      "extensions": ['colours_time', 'output_string']
+      extensions: ["colours_time", "output_string"]
     });
   }
 };
@@ -394,7 +393,7 @@ Blockly.Blocks.action_ticked = {
     this.setOutput(true, Boolean);
     this.setTooltip("Returns true if the clock has ticked");
     this.jsonInit({
-      "extensions": ['colours_time', 'output_boolean']
+      extensions: ["colours_time", "output_boolean"]
     });
   }
 };
@@ -407,7 +406,7 @@ Blockly.Blocks.action_cleartick = {
     this.appendDummyInput().appendField("clear Tick");
     this.setTooltip("Resets the tick counter and reset the tick clock");
     this.jsonInit({
-      "extensions": ['colours_time', 'shape_statement']
+      extensions: ["colours_time", "shape_statement"]
     });
   }
 };

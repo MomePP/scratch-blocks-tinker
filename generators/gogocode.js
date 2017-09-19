@@ -1500,8 +1500,9 @@ Blockly.GogoCode["show_plot_expression"] = function(block) {
 
 /****    VARIABLE    ****/
 
-Blockly.GogoCode.variables_get = function() {
+Blockly.GogoCode.data_variable = function() {
   // Variable getter.
+  console.log(Blockly.GogoCode.variableDB_);
   var code =
     '<span class="c330">[:]' +
     Blockly.GogoCode.variableDB_.getName(
@@ -1512,7 +1513,7 @@ Blockly.GogoCode.variables_get = function() {
   return [code, Blockly.GogoCode.ORDER_ATOMIC];
 };
 
-Blockly.GogoCode.variables_set = function() {
+Blockly.GogoCode.data_setvariableto = function() {
   // Variable setter.
   var argument0 =
     Blockly.GogoCode.valueToCode(
