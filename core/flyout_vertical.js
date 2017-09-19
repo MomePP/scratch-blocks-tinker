@@ -78,7 +78,7 @@ Blockly.VerticalFlyout.prototype.autoClose = false;
  * The width of the flyout, if not otherwise specified.
  * @type {number}
  */
-Blockly.VerticalFlyout.prototype.DEFAULT_WIDTH = 250;
+Blockly.VerticalFlyout.prototype.DEFAULT_WIDTH = 380;
 
 /**
  * Size of a checkbox next to a variable reporter.
@@ -259,8 +259,13 @@ Blockly.VerticalFlyout.prototype.position = function() {
   this.width_ = this.getWidth();
 
   if (this.parentToolbox_) {
+    // console.log('parent toolbox');
     var toolboxWidth = this.parentToolbox_.getWidth();
+    // console.log(this.parentToolbox_);
+    // console.log(toolboxWidth);
+    // console.log(this.width_);
     var categoryWidth = toolboxWidth - this.width_;
+    // console.log(categoryWidth);
     var x = this.toolboxPosition_ == Blockly.TOOLBOX_AT_RIGHT ?
         targetWorkspaceMetrics.viewWidth : categoryWidth;
     var y = 0;
@@ -277,6 +282,7 @@ Blockly.VerticalFlyout.prototype.position = function() {
 
   this.svgGroup_.setAttribute("width", this.width_);
   this.svgGroup_.setAttribute("height", this.height_);
+  // x = 60
   var transform = 'translate(' + x + 'px,' + y + 'px)';
   Blockly.utils.setCssTransform(this.svgGroup_, transform);
 

@@ -148,7 +148,7 @@ Blockly.ScratchBlocks.VerticalExtensions.OUTPUT_BOOLEAN = function() {
 Blockly.ScratchBlocks.VerticalExtensions.registerAll = function() {
   var categoryNames =
       ['control', 'data', 'sounds', 'motion', 'looks', 'event', 'sensing',
-      'pen', 'operators', 'more'];
+      'pen', 'operators', 'more', 'math', 'motor', 'servo', 'other', 'time'];
   // Register functions for all category colours.
   for (var i = 0; i < categoryNames.length; i++) {
     name = categoryNames[i];

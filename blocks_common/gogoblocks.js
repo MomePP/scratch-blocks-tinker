@@ -7,6 +7,9 @@ Blockly.Blocks.action_beep = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setTooltip("Causes the GoGo to beep.");
+    this.jsonInit({
+      "extensions":['colours_other','shape_statement']
+    })
   }
 };
 
@@ -285,9 +288,11 @@ Blockly.Blocks.action_led = {
         new Blockly.FieldDropdown([["on", "on"], ["off", "off"]]),
         "onoff"
       );
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
     this.setTooltip("Causes the GoGo to turn LED on/off.");
+    this.jsonInit({
+      "extensions": ['colours_other', 'shape_statement']
+
+    })
   }
 };
 
@@ -316,9 +321,10 @@ Blockly.Blocks["action_wait"] = {
     this.appendValueInput("NAME", Number);
     this.appendDummyInput().appendField("1/10 second(s)");
     this.setInputsInline(true);
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
     this.setTooltip("Waits for specified time period.");
+    this.jsonInit({
+      "extensions": ['colours_time', 'shape_statement']
+    });
   }
 };
 /***/
@@ -331,7 +337,9 @@ Blockly.Blocks.action_gettimer = {
     this.appendDummyInput().appendField("get timer");
     this.setOutput(true, Number);
     this.setTooltip("Returns value of free-running timer.");
-    this.setOutputShape(Blockly.OUTPUT_SHAPE_ROUND);
+    this.jsonInit({
+      "extensions": ['colours_time', 'output_string']
+    });
   }
 };
 
@@ -341,9 +349,10 @@ Blockly.Blocks.action_reset_timer = {
   init: function() {
     this.setColour(120);
     this.appendDummyInput().appendField("reset timer");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
     this.setTooltip("Resets free-running timer to zero.");
+    this.jsonInit({
+      "extensions": ['colours_time', 'shape_statement']
+    });
   }
 };
 
@@ -355,9 +364,10 @@ Blockly.Blocks["action_settickrate"] = {
     this.appendValueInput("NAME", Number);
     this.appendDummyInput().appendField("1/10 second(s)");
     this.setInputsInline(true);
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
     this.setTooltip("Sets the time beween each Tick");
+    this.jsonInit({
+      "extensions": ['colours_time', 'shape_statement']
+    });
   }
 };
 
@@ -369,7 +379,9 @@ Blockly.Blocks.action_gettickcount = {
     this.appendDummyInput().appendField("Tick count");
     this.setOutput(true, Number);
     this.setTooltip("Reports the number Ticks has passed since the last reset");
-    this.setOutputShape(Blockly.OUTPUT_SHAPE_ROUND);
+    this.jsonInit({
+      "extensions": ['colours_time', 'output_string']
+    });
   }
 };
 
@@ -381,7 +393,9 @@ Blockly.Blocks.action_ticked = {
     this.appendDummyInput().appendField("Ticked?");
     this.setOutput(true, Boolean);
     this.setTooltip("Returns true if the clock has ticked");
-    this.setOutputShape(Blockly.OUTPUT_SHAPE_ROUND);
+    this.jsonInit({
+      "extensions": ['colours_time', 'output_boolean']
+    });
   }
 };
 
@@ -391,9 +405,10 @@ Blockly.Blocks.action_cleartick = {
   init: function() {
     this.setColour(170);
     this.appendDummyInput().appendField("clear Tick");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
     this.setTooltip("Resets the tick counter and reset the tick clock");
+    this.jsonInit({
+      "extensions": ['colours_time', 'shape_statement']
+    });
   }
 };
 
@@ -418,6 +433,9 @@ Blockly.Blocks.action_motor = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setTooltip("Selects specific motor(s) for control.");
+    this.jsonInit({
+      extensions: ["colours_motor", "shape_statement"]
+    });
   }
 };
 
@@ -425,7 +443,6 @@ Blockly.Blocks.action_motor_is_on = {
   category: "Action",
   helpUrl: "http://www.example.com/",
   init: function() {
-    this.setColour(310);
     this.appendDummyInput()
       .appendField("motor")
       .appendField(new Blockly.FieldCheckbox("TRUE"), "a")
@@ -442,16 +459,12 @@ Blockly.Blocks.action_motor_is_on = {
     this.appendDummyInput().appendField("is(are) on?");
     this.setOutput(true, Boolean);
     this.setInputsInline(true);
-    this.setPreviousStatement(false, null);
-    this.setNextStatement(false, null);
+    // this.setPreviousStatement(false, null);
+    // this.setNextStatement(false, null);
     this.setTooltip("Returns True if the selected motors are on");
-    this.setOutputShape(Blockly.OUTPUT_SHAPE_ROUND);
-    // this.jsonInit({
-    //   "outputShape": Blockly.OUTPUT_SHAPE_ROUND,
-    //   // "colour": Blockly.Colours.textField,
-    //   // "colourSecondary": Blockly.Colours.textField,
-    //   // "colourTertiary": Blockly.Colours.textField
-    // });
+    this.jsonInit({
+      extensions: ["colours_motor", "output_boolean"]
+    });
   }
 };
 
@@ -476,12 +489,12 @@ Blockly.Blocks.action_motor_is_cw = {
     this.appendDummyInput().appendField("direction is(are) CW?");
     this.setOutput(true, Boolean);
     this.setInputsInline(true);
-    this.setPreviousStatement(false, null);
-    this.setNextStatement(false, null);
     this.setTooltip(
       "Returns True if the selected motors direction are clock-wise"
     );
-    this.setOutputShape(Blockly.OUTPUT_SHAPE_ROUND);
+    this.jsonInit({
+      extensions: ["colours_motor", "output_boolean"]
+    });
   }
 };
 
@@ -499,9 +512,10 @@ Blockly.Blocks.motor_action_turn = {
     //var input =  this.appendValueInput( "right", "motor");
     //input.appendField(",");
     //this.setOutput(true, "motor");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
     this.setTooltip("Turns on/off selected motor(s).");
+    this.jsonInit({
+      extensions: ["colours_motor", "shape_statement"]
+    });
   }
 };
 
@@ -517,9 +531,10 @@ Blockly.Blocks.motor_action_onfor = {
     this.appendValueInput("value", Number);
     this.appendDummyInput().appendField("1/10 second(s)");
     this.setInputsInline(true);
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
     this.setTooltip("Turns on selected motor(s) for specified period of time.");
+    this.jsonInit({
+      extensions: ["colours_motor", "shape_statement"]
+    });
   }
 };
 
@@ -553,9 +568,10 @@ Blockly.Blocks.motor_action_thisway = {
     );
     // this.appendValueInput( "right", "motor");
     //this.setOutput(true, "motor");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
     this.setTooltip("xxxxx");
+    this.jsonInit({
+      extensions: ["colours_motor", "shape_statement"]
+    });
   }
 };
 
@@ -567,9 +583,10 @@ Blockly.Blocks.motor_action_rd = {
     this.appendDummyInput().appendField("reverse direction");
     // this.appendValueInput( "right", "motor");
     //this.setOutput(true, "motor");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
     this.setTooltip("Reverses direction of selected motor(s).");
+    this.jsonInit({
+      extensions: ["colours_motor", "shape_statement"]
+    });
   }
 };
 
@@ -589,11 +606,12 @@ Blockly.Blocks.motor_action_power = {
     this.setInputsInline(true);
     // this.appendValueInput( "right", "motor");
     //this.setOutput(true, "motor");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
     this.setTooltip(
       "Sets power level of selected motor(s). Values from 0-100."
     );
+    this.jsonInit({
+      extensions: ["colours_motor", "shape_statement"]
+    });
   }
 };
 
@@ -606,9 +624,10 @@ Blockly.Blocks["servo_seth"] = {
     //    this.appendDummyInput()
     //        .appendField("Set servo heading")
     //        .appendField(new Blockly.FieldTextInput("10"), "heading");
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
     this.setTooltip("");
+    this.jsonInit({
+      extensions: ["colours_servo", "shape_statement"]
+    });
   }
 };
 
@@ -621,9 +640,9 @@ Blockly.Blocks["servo_lt"] = {
     //    this.appendDummyInput()
     //        .appendField("Servo left turn")
     //        .appendField(new Blockly.FieldTextInput("10"), "heading");
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
-    this.setTooltip("");
+    this.jsonInit({
+      extensions: ["colours_servo", "shape_statement"]
+    });
   }
 };
 
@@ -636,9 +655,9 @@ Blockly.Blocks["servo_rt"] = {
     //    this.appendDummyInput()
     //        .appendField("Servo right turn")
     //        .appendField(new Blockly.FieldTextInput("10"), "heading");
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
-    this.setTooltip("");
+    this.jsonInit({
+      extensions: ["colours_servo", "shape_statement"]
+    });
   }
 };
 
@@ -673,24 +692,24 @@ Blockly.Blocks.control_if = {
   helpUrl: "http://www.example.com/",
   init: function() {
     this.jsonInit({
-      "type": "control_if",
-      "message0": "if %1 then",
-      "message1": "%1", // Statement
-      "args0": [
+      type: "control_if",
+      message0: "if %1 then",
+      message1: "%1", // Statement
+      args0: [
         {
-          "type": "input_value",
-          "name": "CONDITION",
-          "check": "Boolean"
+          type: "input_value",
+          name: "condition",
+          check: "Boolean"
         }
       ],
-      "args1": [
+      args1: [
         {
-          "type": "input_statement",
-          "name": "SUBSTACK"
+          type: "input_statement",
+          name: "statement"
         }
       ],
-      "category": Blockly.Categories.control,
-      "extensions": ["colours_control", "shape_statement"]
+      category: Blockly.Categories.control,
+      extensions: ["colours_control", "shape_statement"]
     });
   }
 };
@@ -700,32 +719,32 @@ Blockly.Blocks.control_ifelse = {
   helpUrl: "http://www.example.com/",
   init: function() {
     this.jsonInit({
-      "type": "control_if_else",
-      "message0": "if %1 then",
-      "message1": "%1",
-      "message2": "else",
-      "message3": "%1",
-      "args0": [
+      type: "control_if_else",
+      message0: "if %1 then",
+      message1: "%1",
+      message2: "else",
+      message3: "%1",
+      args0: [
         {
-          "type": "input_value",
-          "name": "CONDITION",
-          "check": "Boolean"
+          type: "input_value",
+          name: "condition",
+          check: "Boolean"
         }
       ],
-      "args1": [
+      args1: [
         {
-          "type": "input_statement",
-          "name": "SUBSTACK"
+          type: "input_statement",
+          name: "if"
         }
       ],
-      "args3": [
+      args3: [
         {
-          "type": "input_statement",
-          "name": "SUBSTACK2"
+          type: "input_statement",
+          name: "else"
         }
       ],
-      "category": Blockly.Categories.control,
-      "extensions": ["colours_control", "shape_statement"]
+      category: Blockly.Categories.control,
+      extensions: ["colours_control", "shape_statement"]
     });
   }
 };
@@ -741,10 +760,10 @@ Blockly.Blocks["control_if_state_change"] = {
     var input = this.appendStatementInput("statement", null);
     input.appendField("do");
     this.jsonInit({
-      "extensions": ["colours_control", "shape_statement"]
-    })
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
+      extensions: ["colours_control", "shape_statement"]
+    });
+    // this.setPreviousStatement(true, null);
+    // this.setNextStatement(true, null);
     this.setTooltip("If input expression is true, then do some statements.");
   }
 };
@@ -754,16 +773,16 @@ Blockly.Blocks.control_waituntil = {
   helpUrl: "http://www.example.com/",
   init: function() {
     this.jsonInit({
-      "message0": "wait until %1",
-      "args0": [
+      message0: "wait until %1",
+      args0: [
         {
-          "type": "input_value",
-          "name": "CONDITION",
-          "check": "Boolean"
+          type: "input_value",
+          name: "CONDITION",
+          check: "Boolean"
         }
       ],
-      "category": Blockly.Categories.control,
-      "extensions": ["colours_control", "shape_statement"]
+      category: Blockly.Categories.control,
+      extensions: ["colours_control", "shape_statement"]
     });
   }
 };
@@ -780,9 +799,10 @@ Blockly.Blocks.control_repeat = {
     input = this.appendStatementInput("do", null);
     input.appendField("do");
     this.setInputsInline(true);
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
     this.setTooltip("Repeats block for specific number of times.");
+    this.jsonInit({
+      extensions: ["colours_control", "shape_statement"]
+    });
   }
 };
 
@@ -802,8 +822,11 @@ Blockly.Blocks.control_forever_wait = {
 
     //input = this.appendDummyInput();
     //input.appendField("forever");
-    this.setPreviousStatement(true, null);
+    // this.setPreviousStatement(true, null);
     this.setTooltip("Indefinitely executes block.");
+    this.jsonInit({
+      extensions: ["colours_control", "shape_end"]
+    });
   }
 };
 
@@ -818,7 +841,7 @@ Blockly.Blocks.control_forever = {
 
     //input = this.appendDummyInput();
     //input.appendField("forever");
-    this.setPreviousStatement(true, null);
+    // this.setPreviousStatement(true, null);
     this.setTooltip("Indefinitely executes block.");
     this.jsonInit({
       extensions: ["colours_control", "shape_end"]
@@ -831,9 +854,12 @@ Blockly.Blocks.procedure_stop = {
   init: function() {
     this.setColour(120);
     this.appendDummyInput().appendField("stop this procedure");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
+    // this.setPreviousStatement(true, null);
+    // this.setNextStatement(true, null);
     this.setTooltip("quit the current procedure.");
+    this.jsonInit({
+      extensions: ["colours_control", "shape_statement"]
+    });
   }
 };
 
@@ -867,6 +893,9 @@ Blockly.Blocks.control_when_ticked = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(false, null);
     this.setTooltip("executes when the clock has ticked");
+    this.jsonInit({
+      extensions: ["colours_control", "shape_end"]
+    });
   }
 };
 
@@ -882,6 +911,9 @@ Blockly.Blocks.control_if_ticked = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setTooltip("executes if the clock has ticked");
+    this.jsonInit({
+      extensions: ["colours_control", "shape_statement"]
+    });
   }
 };
 
@@ -914,7 +946,7 @@ Blockly.Blocks.input_sensor = {
   category: "Input, Output, Storage",
   helpUrl: "http://www.example.com/",
   init: function() {
-    this.setColour(290);
+    // this.setColour(290);
     this.appendDummyInput()
       .appendField("sensor")
       .appendField(
@@ -934,10 +966,7 @@ Blockly.Blocks.input_sensor = {
     this.setTooltip("Reports value of specific sensor.");
     // this.outputShape(Blockly.OUTPUT_SHAPE_ROUND);
     this.jsonInit({
-      outputShape: Blockly.OUTPUT_SHAPE_ROUND
-      // "colour": Blockly.Colours.textField,
-      // "colourSecondary": Blockly.Colours.textField,
-      // "colourTertiary": Blockly.Colours.textField
+      extensions: ["colours_sensing", "output_number"]
     });
   }
 };
@@ -1243,7 +1272,7 @@ Blockly.Blocks.math_number = {
       outputShape: Blockly.OUTPUT_SHAPE_ROUND,
       colour: Blockly.Colours.textField,
       colourSecondary: Blockly.Colours.textField,
-      colourTertiary: Blockly.Colours.textField
+      colourTertiary: "#D2D2D2"
     });
   }
 };
@@ -1257,10 +1286,7 @@ Blockly.Blocks.math_random = {
     this.setOutput(true, Number);
     this.setTooltip("Reports pseudorandom 16 bit value.");
     this.jsonInit({
-      extensions: ["colours_operators", "output_number"]
-      // "colour": Blockly.Colours.textField,
-      // "colourSecondary": Blockly.Colours.textField,
-      // "colourTertiary": Blockly.Colours.textField
+      extensions: ["colours_math", "output_number"]
     });
   }
 };
@@ -1288,10 +1314,7 @@ Blockly.Blocks.math_equal = {
     this.setOutput(true, Boolean);
     this.setTooltip("Reports boolean comparison of two inputs.");
     this.jsonInit({
-      extensions: ["colours_operators", "output_boolean"]
-      // "colour": Blockly.Colours.textField,
-      // "colourSecondary": Blockly.Colours.textField,
-      // "colourTertiary": Blockly.Colours.textField
+      extensions: ["colours_math", "output_boolean"]
     });
   }
 };
@@ -1310,10 +1333,7 @@ Blockly.Blocks.math_in_between = {
     this.setOutput(true, Boolean);
     this.setTooltip("Reports True if input is in between the given range.");
     this.jsonInit({
-      extensions: ["colours_operators", "output_boolean"]
-      // "colour": Blockly.Colours.textField,
-      // "colourSecondary": Blockly.Colours.textField,
-      // "colourTertiary": Blockly.Colours.textField
+      extensions: ["colours_math", "output_boolean"]
     });
   }
 };
@@ -1339,10 +1359,7 @@ Blockly.Blocks.variable_increase_by = {
     this.setOutput(false);
     this.setTooltip("Increase a variable value by number.");
     this.jsonInit({
-      extensions: ["colours_operators"]
-      // "colour": Blockly.Colours.textField,
-      // "colourSecondary": Blockly.Colours.textField,
-      // "colourTertiary": Blockly.Colours.textField
+      extensions: ["colours_math"]
     });
   },
   getVars: function() {
@@ -1375,7 +1392,7 @@ Blockly.Blocks.variable_decrease_by = {
     this.setOutput(false);
     this.setTooltip("Decrease a variable value by number.");
     this.jsonInit({
-      extensions: ["colours_operators"]
+      extensions: ["colours_math"]
       // "colour": Blockly.Colours.textField,
       // "colourSecondary": Blockly.Colours.textField,
       // "colourTertiary": Blockly.Colours.textField
@@ -1420,7 +1437,7 @@ Blockly.Blocks.math_operator = {
     this.setOutput(true, Number);
     this.setTooltip("Reports operation of two inputs.");
     this.jsonInit({
-      extensions: ["colours_operators", "output_number"]
+      extensions: ["colours_math", "output_number"]
       // "colour": Blockly.Colours.textField,
       // "colourSecondary": Blockly.Colours.textField,
       // "colourTertiary": Blockly.Colours.textField
@@ -1443,7 +1460,7 @@ Blockly.Blocks.math_andor = {
     this.setOutput(true, Boolean);
     this.setTooltip("Reports bitwise AND/OR of two inputs.");
     this.jsonInit({
-      extensions: ["colours_operators", "output_boolean"]
+      extensions: ["colours_math", "output_boolean"]
       // "colour": Blockly.Colours.textField,
       // "colourSecondary": Blockly.Colours.textField,
       // "colourTertiary": Blockly.Colours.textField
@@ -1463,7 +1480,7 @@ Blockly.Blocks.math_not = {
     this.setOutput(true, Boolean);
     this.setTooltip("Reports boolean that opposite of input.");
     this.jsonInit({
-      extensions: ["colours_operators", "output_boolean"]
+      extensions: ["colours_math", "output_boolean"]
       // "colour": Blockly.Colours.textField,
       // "colourSecondary": Blockly.Colours.textField,
       // "colourTertiary": Blockly.Colours.textField

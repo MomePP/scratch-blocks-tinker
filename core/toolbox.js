@@ -87,7 +87,7 @@ Blockly.Toolbox = function(workspace) {
  * Width of the toolbox, which changes only in vertical layout.
  * @type {number}
  */
-Blockly.Toolbox.prototype.width = 310;
+Blockly.Toolbox.prototype.width = 440;
 
 /**
  * Height of the toolbox, which changes only in horizontal layout.
