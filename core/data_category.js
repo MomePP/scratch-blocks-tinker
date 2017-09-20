@@ -57,8 +57,8 @@ Blockly.DataCategory = function(workspace) {
 
     Blockly.DataCategory.addSetVariableTo(xmlList, firstVariable);
     Blockly.DataCategory.addChangeVariableBy(xmlList, firstVariable);
-    Blockly.DataCategory.addShowVariable(xmlList, firstVariable);
-    Blockly.DataCategory.addHideVariable(xmlList, firstVariable);
+    // Blockly.DataCategory.addShowVariable(xmlList, firstVariable);
+    // Blockly.DataCategory.addHideVariable(xmlList, firstVariable);
   }
 
   // Now add list variables to the flyout
@@ -413,7 +413,7 @@ Blockly.DataCategory.createValue = function(valueName, type) {
       break;
     case 'VALUE':
       if (type === 'math_number') {
-        fieldName = 'NUM';
+        fieldName = 'number';
       } else {
         fieldName = 'TEXT';
       }

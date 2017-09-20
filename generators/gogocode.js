@@ -1502,11 +1502,11 @@ Blockly.GogoCode["show_plot_expression"] = function(block) {
 
 Blockly.GogoCode.data_variable = function() {
   // Variable getter.
-  console.log(Blockly.GogoCode.variableDB_);
+  // console.log(Blockly.GogoCode.variableDB_);
   var code =
     '<span class="c330">[:]' +
     Blockly.GogoCode.variableDB_.getName(
-      this.getFieldValue("VAR"),
+      this.getFieldValue("VARIABLE"),
       Blockly.Variables.NAME_TYPE
     ) +
     "[;]</span>";
@@ -1524,25 +1524,25 @@ Blockly.GogoCode.data_setvariableto = function() {
   // console.log(this.getFieldValue('VAR').name);
   //if (argument0 != '0') argument0 = argument0.slice(1, argument0.length-1);
   var varName = Blockly.GogoCode.variableDB_.getName(
-    this.getFieldValue("VAR"),
+    this.getFieldValue("VARIABLE"),
     Blockly.Variables.NAME_TYPE
   );
   return '<span class="c330">set ' + varName + " " + argument0 + "</span>\n";
 };
 
-Blockly.GogoCode.variable_increase_by = function() {
+Blockly.GogoCode.data_changevariableby = function() {
   // // Increase by.
   // var argument0 = Blockly.GogoCode.valueToCode(this, 'VALUE',
   //     Blockly.GogoCode.ORDER_ASSIGNMENT) || '0';
   var incremental = Blockly.GogoCode.valueToCode(
     this,
-    "increment",
+    "VALUE",
     Blockly.GogoCode.ORDER_ATOMIC
   );
   //if (argument0 != '0') argument0 = argument0.slice(1, argument0.length-1);
   // console.log(this.getFieldValue('VAR').name);
   var varName = Blockly.GogoCode.variableDB_.getName(
-    this.getFieldValue("VAR"),
+    this.getFieldValue("VARIABLE"),
     Blockly.Variables.NAME_TYPE
   );
   return (
@@ -1620,7 +1620,7 @@ Blockly.GogoCode["procedures_callreturn"] = function(block) {
   var code =
     args.join(" ") + " " + parseInt("0xff") + " " + parseInt("0xff") + " ";
   code = "" + funcName + " " + args.join(" ") + "  ";
-  code = code.clean();
+  code = clean(code);
   return [code, Blockly.GogoCode.ORDER_FUNCTION_CALL];
 };
 
@@ -1698,6 +1698,27 @@ Blockly.GogoCode.procedures_callnoreturn = function(a) {
   var code = b + " " + c.join(" ") + " ";
   return code;
 };
+
+Blockly.GogoCode.procedures_ifreturn = function(block) {
+  var value_condition = Blockly.GogoCode.valueToCode(
+    this,
+    "CONDITION",
+    Blockly.GogoCode.ORDER_ATOMIC
+  );
+  var value_return = Blockly.GogoCode.valueToCode(
+    this,
+    "VALUE",
+    Blockly.GogoCode.ORDER_ATOMIC
+  );
+  
+  var code =
+    '<span class="c120">if ' +
+    value_condition +
+    " \n[\nreturn " +
+    value_return +
+    "\n]</span>\n";
+  return code;
+}
 
 /****
 

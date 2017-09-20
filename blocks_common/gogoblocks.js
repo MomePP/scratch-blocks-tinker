@@ -1337,75 +1337,75 @@ Blockly.Blocks.math_in_between = {
   }
 };
 
-Blockly.Blocks.variable_increase_by = {
-  category: "Math",
-  helpUrl: "http://www.example.com/",
-  init: function() {
-    this.setColour(10);
-    this.appendDummyInput()
-      .appendField("increase")
-      .appendField(Blockly.LANG_VARIABLES_GET_TITLE)
-      .appendField(
-        new Blockly.FieldVariable(Blockly.LANG_VARIABLES_GET_ITEM),
-        "VAR"
-      );
-    //.appendField(this.getFieldValue('VAR'));
+// Blockly.Blocks.variable_increase_by = {
+//   category: "Math",
+//   helpUrl: "http://www.example.com/",
+//   init: function() {
+//     this.setColour(10);
+//     this.appendDummyInput()
+//       .appendField("increase")
+//       .appendField(Blockly.LANG_VARIABLES_GET_TITLE)
+//       .appendField(
+//         new Blockly.FieldVariable(Blockly.LANG_VARIABLES_GET_ITEM),
+//         "VAR"
+//       );
+//     //.appendField(this.getFieldValue('VAR'));
 
-    this.appendValueInput("increment", Number).appendField("by ");
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
-    this.setInputsInline(true);
-    this.setOutput(false);
-    this.setTooltip("Increase a variable value by number.");
-    this.jsonInit({
-      extensions: ["colours_math"]
-    });
-  },
-  getVars: function() {
-    return [this.getFieldValue("VAR")];
-  },
-  renameVar: function(oldName, newName) {
-    if (Blockly.Names.equals(oldName, this.getFieldValue("VAR"))) {
-      this.setTitleValue(newName, "VAR");
-    }
-  }
-};
+//     this.appendValueInput("increment", Number).appendField("by ");
+//     this.setPreviousStatement(true);
+//     this.setNextStatement(true);
+//     this.setInputsInline(true);
+//     this.setOutput(false);
+//     this.setTooltip("Increase a variable value by number.");
+//     this.jsonInit({
+//       extensions: ["colours_math"]
+//     });
+//   },
+//   getVars: function() {
+//     return [this.getFieldValue("VAR")];
+//   },
+//   renameVar: function(oldName, newName) {
+//     if (Blockly.Names.equals(oldName, this.getFieldValue("VAR"))) {
+//       this.setTitleValue(newName, "VAR");
+//     }
+//   }
+// };
 
-Blockly.Blocks.variable_decrease_by = {
-  category: "Math",
-  helpUrl: "http://www.example.com/",
-  init: function() {
-    this.setColour(10);
-    this.appendDummyInput()
-      .appendField("decrease")
-      .appendField(Blockly.LANG_VARIABLES_GET_TITLE)
-      .appendField(
-        new Blockly.FieldVariable(Blockly.LANG_VARIABLES_GET_ITEM),
-        "VAR"
-      );
-    //.appendField(this.getFieldValue('VAR'));
-    this.appendValueInput("increment", Number).appendField("by ");
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
-    this.setInputsInline(true);
-    this.setOutput(false);
-    this.setTooltip("Decrease a variable value by number.");
-    this.jsonInit({
-      extensions: ["colours_math"]
-      // "colour": Blockly.Colours.textField,
-      // "colourSecondary": Blockly.Colours.textField,
-      // "colourTertiary": Blockly.Colours.textField
-    });
-  },
-  getVars: function() {
-    return [this.getFieldValue("VAR")];
-  },
-  renameVar: function(oldName, newName) {
-    if (Blockly.Names.equals(oldName, this.getFieldValue("VAR"))) {
-      this.setTitleValue(newName, "VAR");
-    }
-  }
-};
+// Blockly.Blocks.variable_decrease_by = {
+//   category: "Math",
+//   helpUrl: "http://www.example.com/",
+//   init: function() {
+//     this.setColour(10);
+//     this.appendDummyInput()
+//       .appendField("decrease")
+//       .appendField(Blockly.LANG_VARIABLES_GET_TITLE)
+//       .appendField(
+//         new Blockly.FieldVariable(Blockly.LANG_VARIABLES_GET_ITEM),
+//         "VAR"
+//       );
+//     //.appendField(this.getFieldValue('VAR'));
+//     this.appendValueInput("increment", Number).appendField("by ");
+//     this.setPreviousStatement(true);
+//     this.setNextStatement(true);
+//     this.setInputsInline(true);
+//     this.setOutput(false);
+//     this.setTooltip("Decrease a variable value by number.");
+//     this.jsonInit({
+//       extensions: ["colours_math"]
+//       // "colour": Blockly.Colours.textField,
+//       // "colourSecondary": Blockly.Colours.textField,
+//       // "colourTertiary": Blockly.Colours.textField
+//     });
+//   },
+//   getVars: function() {
+//     return [this.getFieldValue("VAR")];
+//   },
+//   renameVar: function(oldName, newName) {
+//     if (Blockly.Names.equals(oldName, this.getFieldValue("VAR"))) {
+//       this.setTitleValue(newName, "VAR");
+//     }
+//   }
+// };
 
 //   this.appendValueInput( "variable", Number)
 //   .appendField("Increase ");
@@ -1992,5 +1992,28 @@ Blockly.Blocks["test_do_sth"] = {
   	this.updateParams_();
   	/***/
     //Blockly.Procedures.mutateCallers(this.getFieldValue('var_name'), this.workspace, this.arguments_, this.paramIds_);
+  }
+};
+
+Blockly.Blocks['text'] = {
+  /**
+   * Block for text value.
+   * @this Blockly.Block
+   */
+  init: function() {
+    this.jsonInit({
+      "message0": "%1",
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "TEXT"
+        }
+      ],
+      "output": "String",
+      "outputShape": Blockly.OUTPUT_SHAPE_ROUND,
+      "colour": Blockly.Colours.textField,
+      "colourSecondary": Blockly.Colours.textField,
+      "colourTertiary": Blockly.Colours.textField
+    });
   }
 };
