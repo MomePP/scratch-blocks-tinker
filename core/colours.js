@@ -41,9 +41,9 @@ Blockly.Colours = {
     "tertiary": "#BD42BD"
   },
   "control": {
-    "primary": "#FFAB19",
-    "secondary": "#EC9C13",
-    "tertiary": "#CF8B17"
+    "primary": "#FF7E21",
+    "secondary": "#FF9100",
+    "tertiary": "#FFB83F"
   },
   "event": {
     "primary": "#FFBF00",
@@ -51,8 +51,8 @@ Blockly.Colours = {
     "tertiary": "#CC9900"
   },
   "sensing": {
-    "primary": "#5CB1D6",
-    "secondary": "#47A8D1",
+    "primary": "#51CF91",
+    "secondary": "#00C853",
     "tertiary": "#2E8EB8"
   },
   "pen": {
@@ -66,8 +66,8 @@ Blockly.Colours = {
     "tertiary": "#389438"
   },
   "data": {
-    "primary": "#FF8C1A",
-    "secondary": "#FF8000",
+    "primary": "#03A9F4",
+    "secondary": "#80D8FF",
     "tertiary": "#DB6E00"
   },
   "more": {
@@ -76,29 +76,29 @@ Blockly.Colours = {
     "tertiary": "#FF3355"
   },
   "math": {
-    "primary": "#00CC69",
-    "secondary": "#00C853",
-    "tertiary": "#B9F6CA"
+    "primary": "#FFAB00",
+    "secondary": "#FFEB3B",
+    "tertiary": "#E09600"
   },
   "motor": {
-    "primary": "#8E24AA",
-    "secondary": "#EDE7F6",
-    "tertiary": "#EA80FC"
+    "primary": "#3A9FFE",
+    "secondary": "#7DDAFE",
+    "tertiary": "#304FFE"
   },
   "servo": {
-    "primary": "#AA2463",
-    "secondary": "#FA6DEE",
-    "tertiary": "#E90079"
+    "primary": "#5240FF",
+    "secondary": "#6D80FA",
+    "tertiary": "#8F00E9"
   },
   "other": {
-    "primary": "#F20000",
-    "secondary": "#C40000",
-    "tertiary": "#FF5B5B"
+    "primary": "#EA80FC",
+    "secondary": "#A000F0",
+    "tertiary": "#F55BFF"
   },
   "time": {
-    "primary": "#6D4C41",
-    "secondary": "#4E342E",
-    "tertiary": "#A1887F"
+    "primary": "#FF488D",
+    "secondary": "#FF105A",
+    "tertiary": "#FF7DA5"
   },
   "text": "#575E75",
   "workspace": "#F9F9F9",
@@ -106,7 +106,7 @@ Blockly.Colours = {
   "toolboxSelected": "#e9eef2",
   "toolboxText": "#575E75",
   "toolbox": "#FFFFFF",
-  "flyout": "#F9F9F9",
+  "flyout": "#000000",
   "scrollbar": "#CECDCE",
   "scrollbarHover": '#CECDCE',
   "textField": "#FFFFFF",

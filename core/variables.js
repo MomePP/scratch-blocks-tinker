@@ -262,7 +262,7 @@ Blockly.Variables.createVariable = function(workspace, opt_callback, opt_type) {
                   promptAndCheckWithAlert(text);  // Recurse
                 });
           }
-          else if (!Blockly.Procedures.isNameUsed(text, workspace)) {
+          else if (Blockly.Procedures.isNameUsed(text, workspace)) {
             Blockly.alert(Blockly.Msg.PROCEDURE_ALREADY_EXISTS.replace('%1',
                 text.toLowerCase()),
                 function() {

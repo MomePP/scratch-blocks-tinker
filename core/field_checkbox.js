@@ -109,10 +109,10 @@ Blockly.FieldCheckbox.prototype.init = function() {
     "rect",
     {
       class: "blocklyFlyoutCheckboxPath",
-      x: -2,
-      y: 8,
-      height: this.CHECKBOX_SIZE,
-      width: this.CHECKBOX_SIZE,
+      x: -3,
+      y: 7,
+      height: this.CHECKBOX_SIZE+2,
+      width: this.CHECKBOX_SIZE+2,
       rx: this.CHECKBOX_CORNER_RADIUS,
       ry: this.CHECKBOX_CORNER_RADIUS,
       fill: "#FFF"
@@ -122,13 +122,13 @@ Blockly.FieldCheckbox.prototype.init = function() {
   Blockly.utils.createSvgElement(
     "rect",
     {
-      x: -2,
-      y: 8,
-      height: this.CHECKBOX_SIZE,
-      width: this.CHECKBOX_SIZE,
+      x: -1,
+      y: 9,
+      height: this.CHECKBOX_SIZE-2,
+      width: this.CHECKBOX_SIZE-2,
       rx: this.CHECKBOX_CORNER_RADIUS,
       ry: this.CHECKBOX_CORNER_RADIUS,
-      fill: "#B388FF"
+      fill: "#3949AB"
     },
     this.fieldGroup_
   );
