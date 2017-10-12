@@ -180,8 +180,9 @@ class Gen_compressed(threading.Thread):
     self.gen_core(True)
     # self.gen_core(False)
     # self.gen_blocks("horizontal")
-    self.gen_blocks("vertical")
-    self.gen_blocks("common")
+    # self.gen_blocks("vertical")
+    # self.gen_blocks("common")
+    self.gen_blocks("tinker")
     # self.gen_generator("javascript")
     # self.gen_generator("python")
     # self.gen_generator("php")
@@ -231,6 +232,9 @@ class Gen_compressed(threading.Thread):
     elif block_type == "common":
       target_filename = "blocks_compressed.js"
       filenames = glob.glob(os.path.join("blocks_common", "*.js"))
+    elif block_type == "tinker":
+      target_filename = "blocks_compressed_tinker.js"
+      filenames = glob.glob(os.path.join("blocks_tinker", "*.js"))
     # Define the parameters for the POST request.
     params = [
         ("compilation_level", "SIMPLE_OPTIMIZATIONS"),
@@ -498,7 +502,7 @@ developers.google.com/blockly/guides/modify/web/closure""")
   # Vertical:
   Gen_uncompressed(search_paths_vertical, True).start()
   # Horizontal:
-  Gen_uncompressed(search_paths_horizontal, False).start()
+  # Gen_uncompressed(search_paths_horizontal, False).start()
 
   # Compressed forms of vertical and horizontal.
   Gen_compressed(search_paths_vertical, search_paths_horizontal).start()
